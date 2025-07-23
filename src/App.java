@@ -95,6 +95,10 @@ public class App {
         System.out.print("Enter employee id: ");
         String employeeId = sc.nextLine();
 
+        if(employeeManagement.getEmployeeMap().get(employeeId) != null){
+            throw new RuntimeException("The employee with id " + employeeId + " already exists.");
+        }
+
         System.out.print("Enter employee name: ");
         String employeeName = sc.nextLine();
 
@@ -104,10 +108,6 @@ public class App {
         System.out.println("3. Manager.");
         System.out.println("4. Boss.");
         String employeeType = sc.nextLine();
-
-        if(employeeManagement.getEmployeeMap().get(employeeId) != null){
-            throw new RuntimeException("The employee with id " + employeeId + " already exists.");
-        }
 
         Employee employee;
         switch(employeeType){
