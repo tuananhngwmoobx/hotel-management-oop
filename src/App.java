@@ -85,6 +85,33 @@ public class App {
     }
 
     private static void getSalary() {
+        Scanner  sc = new Scanner(System.in);
+
+        System.out.println("Enter employee id: ");
+        String employeeId = sc.nextLine();
+
+        Employee employee = employeeManagement.getEmployeeMap().get(employeeId);
+        if(employee == null){
+            throw new  RuntimeException("Employee with id " + employeeId + " not found.");
+        }
+
+        int salary;
+
+        if(employee instanceof Labor){
+            salary = ((Labor)employee).getSalary();
+        }
+        else if(employee instanceof Receptionist){
+            salary = ((Receptionist)employee).getSalary();
+        }
+        else if(employee instanceof Manager){
+            salary = ((Manager)employee).getSalary();
+        }
+        else{
+            throw new RuntimeException("Boss has no salary !");
+        }
+
+        System.out.println("Salary of employee with id " + employeeId + " is " + salary);
+
     }
 
     private static void getListOfRoomsByEmployee() {
