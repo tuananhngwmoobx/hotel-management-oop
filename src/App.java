@@ -2,6 +2,7 @@ import employee.*;
 import hotel.Hotel;
 import hotel.Room;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class App {
@@ -47,6 +48,9 @@ public class App {
                     case 3 -> assignRoomToEmployee();
                     case 4 -> getListOfRoomsByEmployee();
                     case 5 -> getSalary();
+                    case 6 -> {
+                        return;
+                    }
                     default -> System.out.println("Invalid option. Try again.");
                 }
             } catch(Exception e){
@@ -84,6 +88,20 @@ public class App {
     }
 
     private static void getListOfRoomsByEmployee() {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter employee id: ");
+        String employeeId = sc.nextLine();
+
+        if(employeeManagement.getEmployeeMap().get(employeeId) == null){
+            throw  new RuntimeException("Employee with id " + employeeId + " does not exist.");
+        }
+
+        List<Room> rooms = employeeManagement.getEmployeeMap().get(employeeId).getRooms();
+        for(Room room : rooms){
+            System.out.println("Employee with id " + employeeId + " manages the room with\nroomId: "  + room.getId() +
+                    "\nroomName: " + room.getName());
+        }
     }
 
     private static void assignRoomToEmployee() {

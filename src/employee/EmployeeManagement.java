@@ -7,7 +7,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class EmployeeManagement implements Assignment {
+
     private Map<String, Employee> employeeMap = new HashMap<>();
+
     public EmployeeManagement() {};
 
     public EmployeeManagement(Map<String, Employee> employeeMap) {
