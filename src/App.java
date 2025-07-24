@@ -87,6 +87,26 @@ public class App {
     }
 
     private static void assignRoomToEmployee() {
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter room id: ");
+        String roomId = sc.nextLine();
+
+        if(hotel.getRoomMap().get(roomId) == null){
+            throw new  RuntimeException("The room with id " + roomId + " doesn't exists.");
+        }
+
+        Room room = hotel.getRoomMap().get(roomId);
+
+        System.out.print("Enter employee id: ");
+        String employeeId = sc.nextLine();
+        if(employeeManagement.getEmployeeMap().get(employeeId) == null){
+            throw new RuntimeException("The employee with id " + employeeId + " doesn't exists.");
+        }
+
+        employeeManagement.assignRoom(employeeId, room);
+        System.out.println("Room with id " + roomId + " has been assigned to employee with id " + employeeId);
     }
 
     private static void configEmployee() {
