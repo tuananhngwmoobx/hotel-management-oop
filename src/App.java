@@ -60,7 +60,7 @@ public class App {
     }
 
 
-    public static void configRoom() throws RuntimeException{
+    public static void configRoom() {
         /*Luồng thực hiện:
          * Đọc id nhập vào từ người dùng
          * Tìm id đó trong list phòng
@@ -85,7 +85,7 @@ public class App {
     }
 
     private static void getSalary() {
-        Scanner  sc = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
 
         System.out.println("Enter employee id: ");
         String employeeId = sc.nextLine();
